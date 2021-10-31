@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.doanandroid.ChangePassActivity;
 import com.example.doanandroid.Login;
 import com.example.doanandroid.MainActivity;
 import com.example.doanandroid.R;
@@ -45,6 +46,7 @@ public class InformationFragment extends Fragment {
     TextView txtEmail;
     TextView txtDiaChi;
     ImageView imgAvatar;
+    Button btnChangePassWord;
     public InformationFragment() {
         // Required empty public constructor
     }
@@ -62,6 +64,7 @@ public class InformationFragment extends Fragment {
         txtEmail = mview.findViewById(R.id.txtEmail);
         txtDiaChi = mview.findViewById(R.id.txtDiaChi);
         imgAvatar = mview.findViewById(R.id.imgAvatar);
+        btnChangePassWord = mview.findViewById(R.id.btnChangePassWord);
 
         return mview;
     }
@@ -86,6 +89,13 @@ public class InformationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 btnCapNhat();
+            }
+        });
+        btnChangePassWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mainActivity, ChangePassActivity.class);
+                startActivity(intent);
             }
         });
     }
