@@ -1,7 +1,10 @@
 package com.example.doanandroid.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +12,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.doanandroid.Adapters.StudentAdapter;
+import com.example.doanandroid.Login;
 import com.example.doanandroid.MainActivity;
 import com.example.doanandroid.NewsDetail;
 import com.example.doanandroid.R;
@@ -44,6 +49,7 @@ public class HomeFragment extends Fragment {
     List<NewsFeedModel> newsFeedModelList = new ArrayList<NewsFeedModel>();
     MainActivity mainActivity;
     StudentAdapter studentAdapter = null;
+    TextView txtWelcome;
     public HomeFragment() {
         // Required empty public constructor
 
@@ -56,7 +62,12 @@ public class HomeFragment extends Fragment {
         mainActivity = (MainActivity) getActivity();
         // Inflate the layout for this fragment
         mview= inflater.inflate(R.layout.fragment_home, container, false);
+        txtWelcome = mview.findViewById(R.id.txtWelcome);
+        //txtWelcome.setText("Chào mừng " + Login.Student.getName().toString() + " trở lại");
+        txtWelcome.setText(Html.fromHtml("Chào mừng " + "<font color=red>" + Login.Student.getName().toString() + "</font>"));
 
+        //txtWelcome.setTextColor(Color.RED);
+        txtWelcome.setGravity(Gravity.CENTER_HORIZONTAL);
 
         lsvStudent = mview.findViewById(R.id.lsvStudent);
 

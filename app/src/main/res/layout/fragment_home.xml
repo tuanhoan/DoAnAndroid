@@ -13,7 +13,7 @@
         android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_weight="1"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo_dai" />
 
     <TextView
         android:id="@+id/txtWelcome"

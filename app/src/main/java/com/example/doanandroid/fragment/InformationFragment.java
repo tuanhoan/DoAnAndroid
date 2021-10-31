@@ -1,11 +1,13 @@
 package com.example.doanandroid.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,11 @@ import com.example.doanandroid.MainActivity;
 import com.example.doanandroid.R;
 import com.example.lib.Models.StudentModel;
 import com.example.lib.Retrofit.RetrofitClient;
+import com.squareup.picasso.Picasso;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +44,7 @@ public class InformationFragment extends Fragment {
     TextView txtSoDienThoai;
     TextView txtEmail;
     TextView txtDiaChi;
+    ImageView imgAvatar;
     public InformationFragment() {
         // Required empty public constructor
     }
@@ -53,7 +61,7 @@ public class InformationFragment extends Fragment {
         txtSoDienThoai = mview.findViewById(R.id.txtSoDienThoai);
         txtEmail = mview.findViewById(R.id.txtEmail);
         txtDiaChi = mview.findViewById(R.id.txtDiaChi);
-
+        imgAvatar = mview.findViewById(R.id.imgAvatar);
 
         return mview;
     }
@@ -61,10 +69,19 @@ public class InformationFragment extends Fragment {
     public void onStart() {
         super.onStart();
         txtHoTen.setText(Login.Student.getName());
-        txtMgaySinh.setText(Login.Student.getBirthDay().toString());
+        String ngay = Login.Student.getBirthDay().toString();
+        try {
+            ngay = ngay.split("T")[0];
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        txtMgaySinh.setText(ngay);
+        txtMgaySinh.setEnabled(false);
+        txtMgaySinh.setTextColor(Color.BLACK);
         txtSoDienThoai.setText(Login.Student.getNumberPhone());
         txtEmail.setText(Login.Student.getEmail());
         txtDiaChi.setText(Login.Student.getAddress());
+        Picasso.get().load(Login.Student.getImg()).into(imgAvatar);
         btnCapNhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
