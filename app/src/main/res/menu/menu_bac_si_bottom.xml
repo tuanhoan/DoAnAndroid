@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/home"
-        android:icon="@drawable/list"
+        android:icon="@drawable/news"
         android:title="Home" />
     <item
         android:id="@+id/list"
-        android:icon="@drawable/list"
-        android:title="Lịch" />
+        android:icon="@drawable/study"
+        android:title="Học tập" />
     <item
         android:id="@+id/canhan"
-        android:icon="@drawable/list"
+        android:icon="@drawable/information"
         android:title="Cá Nhân" />
 </menu>

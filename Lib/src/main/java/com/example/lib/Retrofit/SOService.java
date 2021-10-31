@@ -2,6 +2,7 @@ package com.example.lib.Retrofit;
 
 import com.example.lib.Models.CommentModel;
 import com.example.lib.Models.NewsFeedModel;
+import com.example.lib.Models.ScoreModel;
 import com.example.lib.Models.StudentModel;
 
 import java.util.List;
@@ -30,4 +31,7 @@ public interface SOService {
 
     @PUT("/api/Students/{id}")
     Call<StudentModel> PutStudent(@Path("id") Integer Id,@Body StudentModel studentModel);
+
+    @GET("api/Scores/{id}")
+    Call<List<ScoreModel>> GetScoreByStudentId(@Path("id") Integer Id);
 }
