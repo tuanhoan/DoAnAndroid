@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 
-        String pathImage = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F844495367623777895%2F&psig=AOvVaw0gNckvUgBO7Qms84ZChmYl&ust=1632640341966000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLDgk7DJmfMCFQAAAAAdAAAAABAD";
+//        String pathImage = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F844495367623777895%2F&psig=AOvVaw0gNckvUgBO7Qms84ZChmYl&ust=1632640341966000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLDgk7DJmfMCFQAAAAAdAAAAABAD";
 
         studentAdapter = new StudentAdapter(mainActivity, R.layout.spitem);
 
@@ -128,7 +128,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
 
     }
 }

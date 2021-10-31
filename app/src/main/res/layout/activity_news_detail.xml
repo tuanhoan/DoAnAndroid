@@ -6,16 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".NewsDetail">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="87dp"
-        android:layout_height="25dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/imageButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
@@ -33,6 +26,12 @@
                 android:text="Tiêu đề"
                 android:textSize="25dp"
                 android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="113dp"
+                android:layout_height="104dp"
+                tools:srcCompat="@drawable/logo" />
 
             <TextView
                 android:id="@+id/txtNgayTao"

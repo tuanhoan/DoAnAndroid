@@ -17,11 +17,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new LichKhamFragment();
+                return new DiemFragment();
             case 1:
-                return new LichDuyetFragment();
+                return new ThoiKhoaBieuFragment();
             default:
-                return new LichKhamFragment();
+                return new DiemFragment();
         }
 
     }
@@ -36,11 +36,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0:
-                return "Lich Kham";
+                return "Điểm";
             case 1:
-                return  "Lich Duyet";
+                return "Thời khóa biểu";
             default:
-                return "Lich Kham";
+                return "Điểm";
         }
     }
 }

@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tab.LichDuyetFragment">
+    tools:context=".Tab.ThoiKhoaBieuFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/tab2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Tab2" />
+        android:layout_gravity="center"
+        android:textSize="50dp"
+        android:text="IN THE FUTURE" />
+
 
 </FrameLayout>

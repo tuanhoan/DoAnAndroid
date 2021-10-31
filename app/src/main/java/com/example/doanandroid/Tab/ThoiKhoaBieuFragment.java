@@ -7,27 +7,28 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.doanandroid.R;
 
+import com.example.doanandroid.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LichKhamFragment#newInstance} factory method to
+ * Use the {@link } factory method to
  * create an instance of this fragment.
  */
-public class LichKhamFragment extends Fragment {
+public class ThoiKhoaBieuFragment extends Fragment {
 
 
 
-
-    public LichKhamFragment() {
+    public ThoiKhoaBieuFragment() {
         // Required empty public constructor
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lich_kham, container, false);
+        return inflater.inflate(R.layout.fragment_thoi_khoa_bieu, container, false);
     }
 }
