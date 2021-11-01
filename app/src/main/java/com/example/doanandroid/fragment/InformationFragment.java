@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ public class InformationFragment extends Fragment {
     TextView txtDiaChi;
     ImageView imgAvatar;
     Button btnChangePassWord;
+    ImageButton btnLogout;
     public InformationFragment() {
         // Required empty public constructor
     }
@@ -63,6 +65,7 @@ public class InformationFragment extends Fragment {
         txtSoDienThoai = mview.findViewById(R.id.txtSoDienThoai);
         txtEmail = mview.findViewById(R.id.txtEmail);
         txtDiaChi = mview.findViewById(R.id.txtDiaChi);
+        btnLogout = mview.findViewById(R.id.btnLogout);
         imgAvatar = mview.findViewById(R.id.imgAvatar);
         btnChangePassWord = mview.findViewById(R.id.btnChangePassWord);
 
@@ -95,6 +98,13 @@ public class InformationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mainActivity, ChangePassActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mainActivity, Login.class);
                 startActivity(intent);
             }
         });
