@@ -21,7 +21,7 @@ public interface SOService {
     Call<StudentModel> Login(@Query("username") String userName, @Query("password") String Password);
 
     @GET("/api/NewFeeds")
-    Call<List<NewsFeedModel>> getAllNewFeed();
+    Call<List<NewsFeedModel>> getAllNewFeed(@Query("searchKey") String searchKey);
 
     @GET("api/Comments/{id}")
     Call<List<CommentModel>> GetCommentByPostId(@Path("id") Integer  Id);

@@ -29,18 +29,49 @@
         android:text="Chào mừng ... trở lại"
         android:textSize="20dp" />
 
+
+    <LinearLayout
+        android:id="@+id/layoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtWelcome"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_below="@+id/txtWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.8">
+
+            <EditText
+                android:id="@+id/txtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:background="@android:color/transparent"
+                android:hint="Tìm kiếm" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_width="10dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/search" />
+    </LinearLayout>
+
     <ListView
+        android:layout_marginTop="5dp"
         android:id="@+id/lsvStudent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/txtWelcome"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutSearch"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="0dp" />
-
-
-
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

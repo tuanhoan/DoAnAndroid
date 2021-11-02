@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,9 +48,12 @@ public class HomeFragment extends Fragment {
     ArrayAdapter<StudentModel> studentModelArrayAdapter;
     ListView lsvStudent;
     List<NewsFeedModel> newsFeedModelList = new ArrayList<NewsFeedModel>();
+
     MainActivity mainActivity;
     StudentAdapter studentAdapter = null;
     TextView txtWelcome;
+    TextView txtSearch;
+    ImageButton btnSearch;
     public HomeFragment() {
         // Required empty public constructor
 
@@ -62,7 +66,9 @@ public class HomeFragment extends Fragment {
         mainActivity = (MainActivity) getActivity();
         // Inflate the layout for this fragment
         mview= inflater.inflate(R.layout.fragment_home, container, false);
+        btnSearch = mview.findViewById(R.id.btnSearch);
         txtWelcome = mview.findViewById(R.id.txtWelcome);
+        txtSearch = mview.findViewById(R.id.txtSearch);
         //txtWelcome.setText("Chào mừng " + Login.Student.getName().toString() + " trở lại");
         txtWelcome.setText(Html.fromHtml("Chào mừng " + "<font color=red>" + Login.Student.getName().toString() + "</font>"));
 
@@ -84,7 +90,7 @@ public class HomeFragment extends Fragment {
 
         studentAdapter = new StudentAdapter(mainActivity, R.layout.spitem);
 
-        Call<List<NewsFeedModel>> call =  RetrofitClient.getInstance().getMyApi().getAllNewFeed();
+        Call<List<NewsFeedModel>> call =  RetrofitClient.getInstance().getMyApi().getAllNewFeed(null);
         StudentAdapter finalStudentAdapter = studentAdapter;
         call.enqueue(new Callback<List<NewsFeedModel>>() {
             @Override
@@ -102,6 +108,26 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Call<List<NewsFeedModel>> search = RetrofitClient.getInstance().getMyApi().getAllNewFeed(txtSearch.getText().toString());
+                StudentAdapter finalStudentAdapter = studentAdapter;
+                search.enqueue(new Callback<List<NewsFeedModel>>() {
+                    @Override
+                    public void onResponse(Call<List<NewsFeedModel>> call, Response<List<NewsFeedModel>> response) {
+                        newsFeedModelList = response.body();
+                        finalStudentAdapter.clear();
+                        finalStudentAdapter.addAll(newsFeedModelList);
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<NewsFeedModel>> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
 
         studentAdapter.addAll(newsFeedModelList);
 //        for(int i =0; i<newsFeedModelList.size(); i++){
