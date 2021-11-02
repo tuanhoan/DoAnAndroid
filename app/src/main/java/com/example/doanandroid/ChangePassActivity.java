@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,8 +65,7 @@ public class ChangePassActivity extends AppCompatActivity {
             if(!txtMatKhauMoi.getText().toString().equals(txtNhapLai.getText().toString())){
                 Toast.makeText(ChangePassActivity.this, "Mật khẩu không khớp với nhau", Toast.LENGTH_SHORT).show();
             }else {
-                Login.Student.setPassword(txtMatKhauMoi.getText().toString());
-                Call<StudentModel> call = RetrofitClient.getInstance().getMyApi().PutStudent(Login.Student.getId(),Login.Student);
+                Call<StudentModel> call = RetrofitClient.getInstance().getMyApi().ChangePasswWord(Login.Student.getId(),txtMatKhauMoi.getText().toString());
                 call.enqueue(new Callback<StudentModel>() {
                      @Override
                      public void onResponse(Call<StudentModel> call, Response<StudentModel> response) {
@@ -82,6 +82,8 @@ public class ChangePassActivity extends AppCompatActivity {
 //                             Toast.makeText(ChangePassActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
 //                         }
                          Toast.makeText(ChangePassActivity.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                         Intent intent = new Intent(ChangePassActivity.this, Login.class);
+                         startActivity(intent);
                      }
 
                      @Override

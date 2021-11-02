@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -65,57 +66,60 @@ public class DiemFragment extends Fragment {
         call.enqueue(new Callback<List<ScoreModel>>() {
                          @Override
                          public void onResponse(Call<List<ScoreModel>> call, Response<List<ScoreModel>> response) {
-                             for (ScoreModel item: response.body()
-                                  ) {
-                                 TableRow row = new TableRow(mainActivity);
-                                 TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
-                                 row.setLayoutParams(lp);
-                                 txtMonHoc = new TextView(mainActivity);
-                                 txtMieng = new TextView(mainActivity);
-                                 txt15P = new TextView(mainActivity);
-                                 txt60P = new TextView(mainActivity);
-                                 txtGiuaKy = new TextView(mainActivity);
-                                 txtCuoiKy = new TextView(mainActivity);
-                                 txtTB = new TextView(mainActivity);
-                                 txtDiemTrungBinh = mview.findViewById(R.id.txtDiemTrungBinh);
-                                 txtXepLoai = mview.findViewById(R.id.txtXepLoai);
+                             try {
+                                 for (ScoreModel item: response.body()
+                                      ) {
+                                     TableRow row = new TableRow(mainActivity);
+                                     TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+                                     row.setLayoutParams(lp);
+                                     txtMonHoc = new TextView(mainActivity);
+                                     txtMieng = new TextView(mainActivity);
+                                     txt15P = new TextView(mainActivity);
+                                     txt60P = new TextView(mainActivity);
+                                     txtGiuaKy = new TextView(mainActivity);
+                                     txtCuoiKy = new TextView(mainActivity);
+                                     txtTB = new TextView(mainActivity);
+                                     txtDiemTrungBinh = mview.findViewById(R.id.txtDiemTrungBinh);
+                                     txtXepLoai = mview.findViewById(R.id.txtXepLoai);
 
 
-                                 txtMonHoc.setText(item.subjectNavigation.getName().toString());
-                                 txtMieng.setText(item.getMouthTest()+"");
-                                 txt15P.setText(item.getTest15m() + "");
-                                 txt60P.setText(item.getTest60m()+"");
-                                 txtGiuaKy.setText(item.getOralTest()+"");
-                                 txtCuoiKy.setText(item.getFinalTest() + "");
-                                 float dtb = (item.getMouthTest() +item.getTest15m()+item.getTest60m()*2+item.getOralTest()*2+item.getFinalTest()*3)/9;
-                                 txtTB.setText(String.format("%.2f",dtb));
+                                     txtMonHoc.setText(item.subjectNavigation.getName().toString());
+                                     txtMieng.setText(item.getMouthTest()+"");
+                                     txt15P.setText(item.getTest15m() + "");
+                                     txt60P.setText(item.getTest60m()+"");
+                                     txtGiuaKy.setText(item.getOralTest()+"");
+                                     txtCuoiKy.setText(item.getFinalTest() + "");
+                                     float dtb = (item.getMouthTest() +item.getTest15m()+item.getTest60m()*2+item.getOralTest()*2+item.getFinalTest()*3)/9;
+                                     txtTB.setText(String.format("%.2f",dtb));
 
-                                 finalDTB += dtb;
+                                     finalDTB += dtb;
 
-                                 row.addView(txtMonHoc);
-                                 row.addView(txtMieng);
-                                 row.addView(txt15P);
-                                 row.addView(txt60P);
-                                 row.addView(txtGiuaKy);
-                                 row.addView(txtCuoiKy);
-                                 row.addView(txtTB);
-                                 tableLayout.addView(row, i);
-                                 i++;
+                                     row.addView(txtMonHoc);
+                                     row.addView(txtMieng);
+                                     row.addView(txt15P);
+                                     row.addView(txt60P);
+                                     row.addView(txtGiuaKy);
+                                     row.addView(txtCuoiKy);
+                                     row.addView(txtTB);
+                                     tableLayout.addView(row, i);
+                                     i++;
+                                 }
+
+                                 String dts =  String.format("%.2f",finalDTB/13);
+                                 txtDiemTrungBinh.setText( dts);
+                                 if(finalDTB/13>=8){
+                                     txtXepLoai.setText("Giỏi");
+                                 }else if(finalDTB/13>=6.5 &&finalDTB<8){
+                                     txtXepLoai.setText("Khá");
+                                 }
+                                 else  if(finalDTB/13>=5&&finalDTB<6.5){
+                                     txtXepLoai.setText("Trung bình");
+                                 }else {
+                                     txtXepLoai.setText("Yếu");
+                                 }
+                                 }
+                             catch (Exception ex){
                              }
-
-                             String dts =  String.format("%.2f",finalDTB/13);
-                             txtDiemTrungBinh.setText( dts);
-                             if(finalDTB/13>=8){
-                                 txtXepLoai.setText("Giỏi");
-                             }else if(finalDTB/13>=6.5 &&finalDTB<8){
-                                 txtXepLoai.setText("Khá");
-                             }
-                             else  if(finalDTB/13>=5&&finalDTB<6.5){
-                                 txtXepLoai.setText("Trung bình");
-                             }else {
-                                 txtXepLoai.setText("Yếu");
-                             }
-
                          }
 
                          @Override

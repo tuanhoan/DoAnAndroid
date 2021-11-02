@@ -34,4 +34,7 @@ public interface SOService {
 
     @GET("api/Scores/{id}")
     Call<List<ScoreModel>> GetScoreByStudentId(@Path("id") Integer Id);
+
+    @PUT("api/Students/changePassword")
+    Call<StudentModel> ChangePasswWord(@Query("id") Integer id, @Query("newPass") String newPassword);
 }
