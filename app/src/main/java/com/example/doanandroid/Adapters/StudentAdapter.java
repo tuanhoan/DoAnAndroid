@@ -26,7 +26,6 @@ public class StudentAdapter extends ArrayAdapter<NewsFeedModel> {
     int resource;
     TextView txtTitle;
     TextView txtContent;
-    TextView txtCreatedAt;
     ImageView img;
     public StudentAdapter(@NonNull Context context, int resource) {
         super(context, resource);

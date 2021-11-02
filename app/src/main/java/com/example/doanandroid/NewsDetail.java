@@ -2,6 +2,7 @@ package com.example.doanandroid;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import com.example.doanandroid.Adapters.CommentAdapter;
 import com.example.lib.Models.CommentModel;
 import com.example.lib.Models.NewsFeedModel;
 import com.example.lib.Retrofit.RetrofitClient;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class NewsDetail extends AppCompatActivity {
     ListView lsvCmt;
     List<CommentModel> listComment;
     NewsFeedModel newsFeedModel;
+    ImageView imgNews;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,9 @@ public class NewsDetail extends AppCompatActivity {
         super.onStart();
 
         lsvCmt = findViewById(R.id.lsvCmt);
+        imgNews = findViewById(R.id.imgNews);
         newsFeedModel = (NewsFeedModel) getIntent().getSerializableExtra("newfeed");
+        Picasso.get().load(newsFeedModel.getImg()).into(imgNews);
         listComment = new ArrayList<CommentModel>();
         commentAdapter = new CommentAdapter(NewsDetail.this, R.layout.comment_item);
 
