@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.doanandroid.fragment.ViewBacSiAdapter;
+import com.example.doanandroid.fragment.ViewAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
             anhxa();
 
-            ViewBacSiAdapter viewBacSiAdapter =new ViewBacSiAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-            viewPager.setAdapter(viewBacSiAdapter);
+            ViewAdapter viewAdapter =new ViewAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+            viewPager.setAdapter(viewAdapter);
             viewPager.setOffscreenPageLimit(2);
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override

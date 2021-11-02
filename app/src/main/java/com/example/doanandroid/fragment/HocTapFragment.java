@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -16,13 +15,13 @@ import com.example.doanandroid.Tab.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 
-public class ListBacSiFragment extends Fragment {
+public class HocTapFragment extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
     View mview;
 
-    public ListBacSiFragment() {
+    public HocTapFragment() {
         // Required empty public constructor
     }
 
@@ -31,7 +30,7 @@ public class ListBacSiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
          //Inflate the layout for this fragment
-        mview = inflater.inflate(R.layout.fragment_list_bac_si, container, false);
+        mview = inflater.inflate(R.layout.fragment_hoc_tap, container, false);
 
         tabLayout=mview.findViewById(R.id.Tablayout);
         viewPager=mview.findViewById(R.id.listtab);

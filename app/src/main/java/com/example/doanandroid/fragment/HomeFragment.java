@@ -138,7 +138,6 @@ public class HomeFragment extends Fragment {
         lsvStudent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(mainActivity, "vi tri "+i, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mainActivity, NewsDetail.class);
                 intent.putExtra("newfeed",newsFeedModelList.get(i));
 

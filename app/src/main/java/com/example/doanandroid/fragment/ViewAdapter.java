@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 
-public class ViewBacSiAdapter extends FragmentStatePagerAdapter {
-    public ViewBacSiAdapter(@NonNull FragmentManager fm, int behavior) {
+public class ViewAdapter extends FragmentStatePagerAdapter {
+    public ViewAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 
@@ -16,10 +16,9 @@ public class ViewBacSiAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-
                 return new HomeFragment();
             case 1:
-                return new ListBacSiFragment();
+                return new HocTapFragment();
             case 2:
                 return new InformationFragment();
             default:

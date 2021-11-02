@@ -59,7 +59,6 @@ public class NewsDetail extends AppCompatActivity {
         call.enqueue(new Callback<List<CommentModel>>() {
             @Override
             public void onResponse(Call<List<CommentModel>> call, Response<List<CommentModel>> response) {
-                Toast.makeText(NewsDetail.this, "success", Toast.LENGTH_SHORT).show();
                 listComment = response.body();
                 commentAdapter.addAll(listComment);
 
@@ -96,8 +95,7 @@ public class NewsDetail extends AppCompatActivity {
 //                             commentAdapter.notifyDataSetChanged();
 
                              finish();
-                             startActivity(getIntent());
-                             Toast.makeText(NewsDetail.this, "Success", Toast.LENGTH_SHORT).show();
+                             startActivity(getIntent()); 
                          }
 
                          @Override
