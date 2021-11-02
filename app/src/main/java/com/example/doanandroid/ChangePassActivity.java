@@ -61,6 +61,8 @@ public class ChangePassActivity extends AppCompatActivity {
     public void btnChange(View view) {
         if(!txtMatKhauCu.getText().toString().equals(Login.Student.getPassword().toString())){
             Toast.makeText(ChangePassActivity.this, "Mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
+        }else if(txtMatKhauMoi.getText().toString().equals(txtMatKhauCu.getText().toString())){
+            Toast.makeText(ChangePassActivity.this, "Mật khẩu không được trùng mật khẩu cũ", Toast.LENGTH_SHORT).show();
         }else {
             if(!txtMatKhauMoi.getText().toString().equals(txtNhapLai.getText().toString())){
                 Toast.makeText(ChangePassActivity.this, "Mật khẩu không khớp với nhau", Toast.LENGTH_SHORT).show();
