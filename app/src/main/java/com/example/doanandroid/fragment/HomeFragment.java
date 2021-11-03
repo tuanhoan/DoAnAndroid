@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.doanandroid.Adapters.StudentAdapter;
 import com.example.doanandroid.Login;
@@ -76,6 +77,31 @@ public class HomeFragment extends Fragment {
         txtWelcome.setGravity(Gravity.CENTER_HORIZONTAL);
 
         lsvStudent = mview.findViewById(R.id.lsvStudent);
+        final SwipeRefreshLayout pullToRefresh = mview.findViewById(R.id.pullToRefresh);
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+//                Call<List<NewsFeedModel>> call =  RetrofitClient.getInstance().getMyApi().getAllNewFeed(null);
+//                StudentAdapter finalStudentAdapter = studentAdapter;
+//                call.enqueue(new Callback<List<NewsFeedModel>>() {
+//                    @Override
+//                    public void onResponse(Call<List<NewsFeedModel>> call, Response<List<NewsFeedModel>> response) {
+//                        newsFeedModelList = response.body();
+//                        finalStudentAdapter.addAll(newsFeedModelList);
+//
+//
+//                        //Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<List<NewsFeedModel>> call, Throwable t) {
+//                        //Toast.makeText(.this, "Failed", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+                LoadData();
+                pullToRefresh.setRefreshing(false);
+            }
+        });
 
 
          //btn=mview.findViewById(R.id.id);
@@ -129,6 +155,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         studentAdapter.addAll(newsFeedModelList);
 //        for(int i =0; i<newsFeedModelList.size(); i++){
 //            studentAdapter.add(newsFeedModelList.get(i));
@@ -150,6 +177,23 @@ public class HomeFragment extends Fragment {
 
     }
 
+    void LoadData(){
+        Call<List<NewsFeedModel>> search = RetrofitClient.getInstance().getMyApi().getAllNewFeed(null);
+        StudentAdapter finalStudentAdapter = studentAdapter;
+        search.enqueue(new Callback<List<NewsFeedModel>>() {
+            @Override
+            public void onResponse(Call<List<NewsFeedModel>> call, Response<List<NewsFeedModel>> response) {
+                newsFeedModelList = response.body();
+                finalStudentAdapter.clear();
+                finalStudentAdapter.addAll(newsFeedModelList);
+            }
+
+            @Override
+            public void onFailure(Call<List<NewsFeedModel>> call, Throwable t) {
+
+            }
+        });
+    }
     @Override
     public void onStart() {
         super.onStart();
